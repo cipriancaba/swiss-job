@@ -9,6 +9,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "3.1.0",
     "redux": "^4.0.1",
+    "redux-persist": "^5.10.0",
     "redux-saga": "^0.16.2"
   },
   "scripts": {
@@ -24,8 +25,10 @@
     "@types/react-dom": "^16.0.9",
     "@types/react-redux": "^6.0.9",
     "@types/react-router-dom": "^4.3.1",
+    "@types/redux-persist": "^4.3.1",
     "@types/redux-saga": "^0.10.5",
     "prettier": "^1.14.3",
+    "redux-devtools-extension": "^2.13.5",
     "typescript": "^3.1.3"
   }
 }

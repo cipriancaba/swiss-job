@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { NavLink, withRouter, RouteComponentProps, Link } from 'react-router-dom'
+import { Link, NavLink, RouteComponentProps, withRouter } from 'react-router-dom'
 import { AppRoute } from '../appRoutes'
 
 interface SidebarProps {
@@ -7,7 +7,7 @@ interface SidebarProps {
 }
 
 class SidebarComponent extends React.PureComponent<SidebarProps & RouteComponentProps> {
-  render = () => {
+  public render = () => {
     console.log(this.props)
     const { routes } = this.props
     const initialRoute = routes[0]

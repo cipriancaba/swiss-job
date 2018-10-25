@@ -13,20 +13,20 @@ export interface AppRoute {
 export const appRoutes: AppRoute[] = [
   {
     content: () => <TransformDataset />,
-    path: '/',
     exact: true,
+    path: '/',
     sidebar: () => <span>Transform dataset</span>,
   },
   {
     content: () => <ManageDictionaries />,
-    path: '/manage',
     exact: true,
+    path: '/manage',
     sidebar: () => <span>Manage dictionaries</span>,
   },
   {
     content: () => <ManageDataset />,
-    path: '/dataset',
     exact: true,
+    path: '/dataset',
     sidebar: () => <span>Manage dataset</span>,
   },
 ]
