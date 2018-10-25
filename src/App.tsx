@@ -1,23 +1,25 @@
 import * as React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css'
-
-import logo from './logo.svg'
+import { appRoutes } from './appRoutes'
+import { Sidebar } from './components/Sidebar'
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <aside>Hello</aside>
-        <main>
-          <p className="App-intro">
-            To get started, edit <code>src/App.tsx</code> and save to reload.
-          </p>
-        </main>
-      </div>
+      <Router>
+        <div className="App">
+          <div className="Sidebar">
+            <Sidebar routes={appRoutes} />
+          </div>
+
+          <div className="Content">
+            {appRoutes.map(route => (
+              <Route key={route.path} exact={route.exact} path={route.path} component={route.content} />
+            ))}
+          </div>
+        </div>
+      </Router>
     )
   }
 }
