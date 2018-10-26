@@ -11,6 +11,7 @@
     "member-ordering": false,
     "no-bitwise": false,
     "no-var-requires": false,
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"],
+    "jsx-no-lambda": false
   }
 }

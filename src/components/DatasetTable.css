@@ -1,0 +1,36 @@
+.DatasetTable {
+  display: flex;
+  flex-direction: column;
+}
+
+.DatasetTable table {
+  border-spacing: 0;
+}
+
+.DatasetTable table th,
+td {
+  border: 1px solid #e6e6e6;
+  padding: 1em;
+  text-align: left;
+}
+
+.DatasetTable table td input {
+  border: none;
+  font: 400 16px sans-serif;
+}
+
+.DatasetTable table .invalid {
+  background-color: lightpink;
+}
+
+.DatasetTable .EditContainer {
+  flex: 1;
+  display: flex;
+  margin-top: 20px;
+}
+
+.DatasetTable .EditContainer button {
+  font-size: 16px;
+  padding: 10px;
+  margin-right: 20px;
+}
