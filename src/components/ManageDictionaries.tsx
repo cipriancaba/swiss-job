@@ -64,8 +64,8 @@ export class ManageDictionariesComponent extends React.PureComponent<ManageDicti
 }
 
 const mapStateToProps = (state: RootState) => {
-  const transformMaps = Object.values(state.transformMap)
-  return { products: transformMaps[0] }
+  const dictionaries = Object.values(state.dictionaries)
+  return { products: dictionaries[0] }
 }
 
 export const ManageDictionaries = connect(mapStateToProps)(ManageDictionariesComponent)

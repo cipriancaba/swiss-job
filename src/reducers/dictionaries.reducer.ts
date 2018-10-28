@@ -1,8 +1,8 @@
 import { ProductMap } from '../types'
 
-export type TransformMapState = Record<string, ProductMap[]>
+export type DictionariesState = Record<string, ProductMap[]>
 
-export const initialState: TransformMapState = {
+export const initialState: DictionariesState = {
   default: [
     {
       from: 'Anthracite',
@@ -19,7 +19,7 @@ export const initialState: TransformMapState = {
   ],
 }
 
-export function transformMap(state = initialState): TransformMapState {
+export function dictionaries(state = initialState): DictionariesState {
   // dummy reducer for now.. Added for future management of original dataset
   return initialState
 }

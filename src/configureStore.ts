@@ -3,13 +3,13 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { persistCombineReducers, PersistedState, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import createSagaMiddleware from 'redux-saga'
+import { dictionaries, DictionariesState } from './reducers/dictionaries.reducer'
 import { originalDataset, OriginalDatasetState } from './reducers/originalDataset.reducer'
-import { transformMap, TransformMapState } from './reducers/transformMap.reducer'
 import { rootSagas } from './sagas'
 
 export interface RootState extends PersistedState {
   originalDataset: OriginalDatasetState
-  transformMap: TransformMapState
+  dictionaries: DictionariesState
 }
 
 const initialState: Partial<RootState> = {}
@@ -22,14 +22,14 @@ const config = {
   key: 'root',
   storage,
   version: 1,
-  whitelist: ['originalDataset', 'transformMap'],
+  whitelist: ['originalDataset', 'dictionaries'],
 }
 
-const reducersWithPersist = persistCombineReducers(config, { originalDataset, transformMap })
+const reducersWithPersist = persistCombineReducers(config, { originalDataset, dictionaries })
 const store = createStore(reducersWithPersist, initialState, composeWithDevTools(middleware))
 
 const persistor = persistStore(store)
-// persistor.purge()
+persistor.purge()
 
 sagaMiddleware.run(rootSagas)
 
