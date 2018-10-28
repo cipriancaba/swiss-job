@@ -1,35 +1,41 @@
-.DatasetTable {
+.EditableTable {
   display: flex;
   flex-direction: column;
 }
 
-.DatasetTable table {
+.EditableTable table {
   border-spacing: 0;
 }
 
-.DatasetTable table th,
+.EditableTable table th,
 td {
   border: 1px solid #e6e6e6;
   padding: 1em;
   text-align: left;
+  height: 50px;
 }
 
-.DatasetTable table td input {
+.EditableTable table td input {
   border: none;
   font: 400 16px sans-serif;
+  width: 100%;
 }
 
-.DatasetTable table .invalid {
+.EditableTable table .invalid {
   background-color: lightpink;
 }
 
-.DatasetTable .EditContainer {
+.EditableTable table .error {
+  padding-top: 10px;
+}
+
+.EditableTable .EditContainer {
   flex: 1;
   display: flex;
   margin-top: 20px;
 }
 
-.DatasetTable .EditContainer button {
+.EditableTable button {
   font-size: 16px;
   padding: 10px;
   margin-right: 20px;

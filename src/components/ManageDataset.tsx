@@ -1,17 +1,47 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { RootState } from 'src/configureStore'
-import { DatasetTable } from './DatasetTable'
+import { RootState } from '../configureStore'
+import { Product, ValidatedProduct } from '../types'
+import { EditableTable } from './EditableTable'
 
 type ManageDatasetProps = ReturnType<typeof mapStateToProps>
 
 class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
+  private getValidatedProduct = (
+    property: keyof Product,
+    newValue: string,
+    product: ValidatedProduct<Product>,
+    products: Array<ValidatedProduct<Product>>
+  ) => {
+    const newProduct = {
+      ...product,
+      [property]: {
+        value: newValue,
+        isValid: !!newValue,
+        validationError: newValue === '' ? 'Please enter a value' : undefined,
+      },
+    }
+    return newProduct
+  }
+
+  private createNewProduct = () => ({
+    product: '',
+    color: '',
+    price: '',
+  })
+
   public render = () => {
     return (
       <div>
         <h1>MANAGE DATASET</h1>
         <div>
-          <DatasetTable dataset={this.props.dataset} isEditable={true} />
+          <EditableTable<Product>
+            products={this.props.products}
+            isEditable={true}
+            getValidatedProduct={this.getValidatedProduct}
+            createNewProduct={this.createNewProduct}
+            headers={['Product', 'Color', 'Price']}
+          />
         </div>
       </div>
     )
@@ -19,7 +49,7 @@ class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  return { dataset: state.originalDataset }
+  return { products: state.originalDataset }
 }
 
 export const ManageDataset = connect(mapStateToProps)(ManageDatasetComponent)

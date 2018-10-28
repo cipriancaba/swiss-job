@@ -8,7 +8,6 @@ interface SidebarProps {
 
 class SidebarComponent extends React.PureComponent<SidebarProps & RouteComponentProps> {
   public render = () => {
-    console.log(this.props)
     const { routes } = this.props
     const initialRoute = routes[0]
     return (
