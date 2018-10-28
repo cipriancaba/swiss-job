@@ -1,12 +1,22 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { RootState } from 'src/configureStore'
-import { ProductMap, ValidatedProduct } from 'src/types'
+import { connect, DispatchProp } from 'react-redux'
+import { dictionariesActions } from '../actions/dictionaries.actions'
+import { RootState } from '../configureStore'
+import { ProductMap, ValidatedProduct } from '../types'
 import { EditableTable } from './EditableTable'
+import './ManageDictionaries.css'
 
-type ManageDictionariesProps = ReturnType<typeof mapStateToProps>
+type ManageDictionariesProps = ReturnType<typeof mapStateToProps> & DispatchProp
 
-export class ManageDictionariesComponent extends React.PureComponent<ManageDictionariesProps> {
+interface ManageDictionariesState {
+  newDictionaryName?: string
+}
+
+export class ManageDictionariesComponent extends React.PureComponent<ManageDictionariesProps, ManageDictionariesState> {
+  public state = {
+    newDictionaryName: '',
+  }
+
   private getValidatedProduct = (
     property: keyof ProductMap,
     newValue: string,
@@ -47,25 +57,67 @@ export class ManageDictionariesComponent extends React.PureComponent<ManageDicti
     to: '',
   })
 
+  private createNewDictionary = () => {
+    this.props.dispatch(dictionariesActions.createDictionary(this.state.newDictionaryName))
+    this.setState({ newDictionaryName: '' })
+  }
+
+  private removeDictionary = (id: string) => {
+    this.props.dispatch(dictionariesActions.removeDictionary(id))
+  }
+
+  private onChangeDictionaryName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      newDictionaryName: e.currentTarget.value,
+    })
+  }
+
+  private onUpdateData = (id: string, products: Array<ValidatedProduct<ProductMap>>) => {
+    this.props.dispatch(
+      dictionariesActions.updateDictionary(
+        id,
+        products.map(product => ({ from: product.from.value, to: product.to.value }))
+      )
+    )
+  }
+
   public render = () => (
-    <div>
+    <div className="ManageDictionaries">
       <h1>MANAGE DICTIONARIES</h1>
+      <div className="AddDictionary">
+        <input value={this.state.newDictionaryName} onChange={this.onChangeDictionaryName} />
+        <button type="button" onClick={this.createNewDictionary}>
+          ADD NEW DICTIONARY
+        </button>
+      </div>
       <div>
-        <EditableTable<ProductMap>
-          products={this.props.products}
-          isEditable={true}
-          getValidatedProduct={this.getValidatedProduct}
-          createNewProduct={this.createNewProduct}
-          headers={['From', 'To']}
-        />
+        {Object.keys(this.props.dictionaries)
+          .reverse()
+          .map(id => (
+            <div className="Dictionary" key={id}>
+              <div className="Header">
+                <h2>Dictionary {id}</h2>
+                <button type="button" onClick={() => this.removeDictionary(id)}>
+                  REMOVE
+                </button>
+              </div>
+              <EditableTable<ProductMap>
+                products={this.props.dictionaries[id]}
+                isEditable={true}
+                getValidatedProduct={this.getValidatedProduct}
+                createNewProduct={this.createNewProduct}
+                headers={['From', 'To']}
+                onUpdateData={products => this.onUpdateData(id, products)}
+              />
+            </div>
+          ))}
       </div>
     </div>
   )
 }
 
 const mapStateToProps = (state: RootState) => {
-  const dictionaries = Object.values(state.dictionaries)
-  return { products: dictionaries[0] }
+  return { dictionaries: state.dictionaries }
 }
 
 export const ManageDictionaries = connect(mapStateToProps)(ManageDictionariesComponent)

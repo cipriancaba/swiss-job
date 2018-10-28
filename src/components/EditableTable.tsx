@@ -13,6 +13,7 @@ export interface EditableTableProps<P> {
   ) => ValidatedProduct<P>
   createNewProduct: () => P
   headers: string[]
+  onUpdateData: (products: Array<ValidatedProduct<P>>) => void
 }
 
 interface EditableTableState<P> {
@@ -78,8 +79,8 @@ export class EditableTable<P> extends React.PureComponent<EditableTableProps<P>,
     )
 
     if (productsValid) {
-      // TODO - dispatch action to save new data
       this.setState({ isEditing: false })
+      this.props.onUpdateData(this.state.pendingData)
     } else {
       alert('Please add valid values in fields marked with red')
     }
@@ -140,7 +141,7 @@ export class EditableTable<P> extends React.PureComponent<EditableTableProps<P>,
                   Cancel changes
                 </button>
                 <button type="button" onClick={this.addProduct}>
-                  Add product
+                  Add line
                 </button>
                 <button type="button" onClick={this.saveProduct}>
                   Save changes

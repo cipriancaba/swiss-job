@@ -30,6 +30,10 @@ class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
     price: '',
   })
 
+  private onUpdateData = (products: Array<ValidatedProduct<Product>>) => {
+    console.log('update data')
+  }
+
   public render = () => {
     return (
       <div>
@@ -41,6 +45,7 @@ class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
             getValidatedProduct={this.getValidatedProduct}
             createNewProduct={this.createNewProduct}
             headers={['Product', 'Color', 'Price']}
+            onUpdateData={this.onUpdateData}
           />
         </div>
       </div>

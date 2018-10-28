@@ -1,0 +1,25 @@
+.ManageDictionaries .AddDictionary input {
+  margin-right: 20px;
+  height: 30px;
+  width: 200px;
+  font: 400 16px sans-serif;
+}
+
+.ManageDictionaries .Dictionary {
+  padding-top: 50px;
+}
+
+.ManageDictionaries .Dictionary .Header {
+  display: flex;
+  align-items: center;
+}
+
+.ManageDictionaries .Dictionary .Header button {
+  margin-left: 20px;
+}
+
+.ManageDictionaries button {
+  font-size: 16px;
+  padding: 10px;
+  margin-right: 20px;
+}

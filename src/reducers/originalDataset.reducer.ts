@@ -22,5 +22,5 @@ export const initialState: OriginalDatasetState = [
 
 export function originalDataset(state = initialState): OriginalDatasetState {
   // dummy reducer for now.. Added for future management of original dataset
-  return initialState
+  return state
 }

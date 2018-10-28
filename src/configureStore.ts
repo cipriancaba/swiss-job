@@ -29,7 +29,7 @@ const reducersWithPersist = persistCombineReducers(config, { originalDataset, di
 const store = createStore(reducersWithPersist, initialState, composeWithDevTools(middleware))
 
 const persistor = persistStore(store)
-persistor.purge()
+// persistor.purge()
 
 sagaMiddleware.run(rootSagas)
 
