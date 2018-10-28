@@ -58,8 +58,12 @@ export class ManageDictionariesComponent extends React.PureComponent<ManageDicti
   })
 
   private createNewDictionary = () => {
-    this.props.dispatch(dictionariesActions.createDictionary(this.state.newDictionaryName))
-    this.setState({ newDictionaryName: '' })
+    if (this.state.newDictionaryName) {
+      this.props.dispatch(dictionariesActions.createDictionary(this.state.newDictionaryName))
+      this.setState({ newDictionaryName: '' })
+    } else {
+      alert('Please add a name for your dictionary')
+    }
   }
 
   private removeDictionary = (id: string) => {

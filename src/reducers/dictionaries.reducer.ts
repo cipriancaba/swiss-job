@@ -18,20 +18,6 @@ export const initialState: DictionariesState = {
       to: 'Silver',
     },
   ],
-  test: [
-    {
-      from: 'Anthracite',
-      to: 'Dark Grey',
-    },
-    {
-      from: 'Midnight Black',
-      to: 'Black',
-    },
-    {
-      from: 'Mystic Silver',
-      to: 'Silver',
-    },
-  ],
 }
 
 export function dictionaries(state = initialState, action: DictionariesActions): DictionariesState {

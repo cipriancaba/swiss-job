@@ -1,3 +1,4 @@
+import { OriginalDatasetActions, OriginalDatasetActionTypes } from '../actions/originalDataset.actions'
 import { Product } from '../types'
 
 export type OriginalDatasetState = Product[]
@@ -20,7 +21,11 @@ export const initialState: OriginalDatasetState = [
   },
 ]
 
-export function originalDataset(state = initialState): OriginalDatasetState {
-  // dummy reducer for now.. Added for future management of original dataset
-  return state
+export function originalDataset(state = initialState, action: OriginalDatasetActions): OriginalDatasetState {
+  switch (action.type) {
+    case OriginalDatasetActionTypes.UPDATE_DATASET:
+      return [...action.payload]
+    default:
+      return state
+  }
 }

@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
+import { connect, DispatchProp } from 'react-redux'
+import { originalDatasetActions } from '../actions/originalDataset.actions'
 import { RootState } from '../configureStore'
 import { Product, ValidatedProduct } from '../types'
 import { EditableTable } from './EditableTable'
 
-type ManageDatasetProps = ReturnType<typeof mapStateToProps>
+type ManageDatasetProps = ReturnType<typeof mapStateToProps> & DispatchProp
 
 class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
   private getValidatedProduct = (
@@ -31,7 +32,11 @@ class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
   })
 
   private onUpdateData = (products: Array<ValidatedProduct<Product>>) => {
-    console.log('update data')
+    this.props.dispatch(
+      originalDatasetActions.updateDictionary(
+        products.map(p => ({ product: p.product.value, color: p.color.value, price: p.price.value }))
+      )
+    )
   }
 
   public render = () => {
