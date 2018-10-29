@@ -41,7 +41,7 @@ class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
 
   public render = () => {
     return (
-      <div>
+      <div className="ManageDataset">
         <h1>MANAGE DATASET</h1>
         <div>
           <EditableTable<Product>

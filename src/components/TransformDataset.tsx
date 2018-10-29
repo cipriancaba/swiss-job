@@ -14,7 +14,7 @@ interface TransformDatasetState {
   mappedProducts: Product[]
 }
 
-class TransformDatasetComponent extends React.PureComponent<TransformDatasetProps, TransformDatasetState> {
+export class TransformDatasetComponent extends React.PureComponent<TransformDatasetProps, TransformDatasetState> {
   public state = {
     currentDictionary: [],
     currentDictionaryId: undefined,

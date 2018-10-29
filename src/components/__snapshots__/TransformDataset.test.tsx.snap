@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransformDataset renders TransformDataset 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(TransformDatasetComponent) />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "dictionaries": Object {
+        "default": Array [
+          Object {
+            "from": "Anthracite",
+            "to": "Dark Grey",
+          },
+          Object {
+            "from": "Midnight Black",
+            "to": "Black",
+          },
+          Object {
+            "from": "Mystic Silver",
+            "to": "Silver",
+          },
+        ],
+      },
+      "dispatch": [Function],
+      "products": Array [
+        Object {
+          "color": "Anthracite",
+          "price": "CHF 769",
+          "product": "Apple iPhone 6s",
+        },
+        Object {
+          "color": "Midnight Black",
+          "price": "CHF 569",
+          "product": "Samsung Galaxy S8",
+        },
+        Object {
+          "color": "Mystic Silver",
+          "price": "CHF 272",
+          "product": "Huawei P9",
+        },
+      ],
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "dictionaries": Object {
+          "default": Array [
+            Object {
+              "from": "Anthracite",
+              "to": "Dark Grey",
+            },
+            Object {
+              "from": "Midnight Black",
+              "to": "Black",
+            },
+            Object {
+              "from": "Mystic Silver",
+              "to": "Silver",
+            },
+          ],
+        },
+        "dispatch": [Function],
+        "products": Array [
+          Object {
+            "color": "Anthracite",
+            "price": "CHF 769",
+            "product": "Apple iPhone 6s",
+          },
+          Object {
+            "color": "Midnight Black",
+            "price": "CHF 569",
+            "product": "Samsung Galaxy S8",
+          },
+          Object {
+            "color": "Mystic Silver",
+            "price": "CHF 272",
+            "product": "Huawei P9",
+          },
+        ],
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "context": Object {
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+    },
+  },
+}
+`;
