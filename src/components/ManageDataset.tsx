@@ -46,7 +46,6 @@ class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
         <div>
           <EditableTable<Product>
             products={this.props.products}
-            isEditable={true}
             getValidatedProduct={this.getValidatedProduct}
             createNewProduct={this.createNewProduct}
             headers={['Product', 'Color', 'Price']}

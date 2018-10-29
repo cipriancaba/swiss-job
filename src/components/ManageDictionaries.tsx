@@ -107,7 +107,6 @@ export class ManageDictionariesComponent extends React.PureComponent<ManageDicti
               </div>
               <EditableTable<ProductMap>
                 products={this.props.dictionaries[id]}
-                isEditable={true}
                 getValidatedProduct={this.getValidatedProduct}
                 createNewProduct={this.createNewProduct}
                 headers={['From', 'To']}

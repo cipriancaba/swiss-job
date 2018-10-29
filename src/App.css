@@ -2,46 +2,6 @@
   display: flex;
 }
 
-.Sidebar {
-  background-color: #111111;
-  width: 250px;
-  height: 100vh;
-  position: fixed;
-}
-
-.Sidebar h3 {
-  color: #999999;
-  padding: 5px;
-  margin-left: 15px;
-}
-
-.Sidebar ul {
-  list-style-type: none;
-  padding: 0px;
-}
-
-.Sidebar li {
-  line-height: 40px;
-  text-indent: 20px;
-}
-
-.Sidebar li:hover {
-  background-color: rgba(50, 50, 50, 0.6);
-  color: white;
-}
-
-.Sidebar .selected {
-  color: white;
-  font-weight: bold;
-}
-
-.Sidebar a {
-  display: block;
-  text-decoration: none;
-  color: #999999;
-  font-size: larger;
-}
-
 .Content {
   flex: 8;
   padding: 10px;

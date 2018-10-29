@@ -4,7 +4,6 @@ import './EditableTable.css'
 
 export interface EditableTableProps<P> {
   products: P[]
-  isEditable: boolean
   getValidatedProduct: (
     property: keyof P,
     newValue: string,
@@ -105,7 +104,6 @@ export class EditableTable<P> extends React.PureComponent<EditableTableProps<P>,
   }
 
   public render() {
-    const { isEditable } = this.props
     const { isEditing, pendingData } = this.state
 
     return (
@@ -133,27 +131,25 @@ export class EditableTable<P> extends React.PureComponent<EditableTableProps<P>,
             ))}
           </tbody>
         </table>
-        {isEditable && (
-          <div className="EditContainer">
-            {isEditing ? (
-              <>
-                <button type="button" onClick={this.cancelEditing}>
-                  Cancel changes
-                </button>
-                <button type="button" onClick={this.addProduct}>
-                  Add line
-                </button>
-                <button type="button" onClick={this.saveProduct}>
-                  Save changes
-                </button>
-              </>
-            ) : (
-              <button type="button" onClick={this.startEditing}>
-                Edit data
+        <div className="EditContainer">
+          {isEditing ? (
+            <>
+              <button type="button" onClick={this.cancelEditing}>
+                Cancel changes
               </button>
-            )}
-          </div>
-        )}
+              <button type="button" onClick={this.addProduct}>
+                Add line
+              </button>
+              <button type="button" onClick={this.saveProduct}>
+                Save changes
+              </button>
+            </>
+          ) : (
+            <button type="button" onClick={this.startEditing}>
+              Edit data
+            </button>
+          )}
+        </div>
         {isEditing && <h2>EDITING MODE - Click any cell to edit</h2>}
       </div>
     )

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link, NavLink, RouteComponentProps, withRouter } from 'react-router-dom'
 import { AppRoute } from '../appRoutes'
+import './Sidebar.css'
 
 interface SidebarProps {
   routes: AppRoute[]

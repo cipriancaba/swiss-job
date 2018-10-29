@@ -1,0 +1,16 @@
+.DisplayTable {
+  display: flex;
+  flex-direction: column;
+}
+
+.DisplayTable table {
+  border-spacing: 0;
+}
+
+.DisplayTable table th,
+td {
+  border: 1px solid #e6e6e6;
+  padding: 1em;
+  text-align: left;
+  height: 20px;
+}

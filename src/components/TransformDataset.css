@@ -1,0 +1,40 @@
+.TransformSource {
+  display: flex;
+  align-content: space-between;
+}
+
+.TransformSource a,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.TransformSource .Dataset {
+  flex: 1;
+}
+
+.TransformSource .Dataset .DisplayTable {
+  margin-top: 60px;
+}
+
+.TransformSource .Dictionary {
+  flex: 1;
+  margin-left: 30px;
+}
+
+.TransformSource .Dictionary .SelectContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.TransformSource .Dictionary span {
+  margin-right: 20px;
+}
+
+.TransformSource .Dictionary select {
+  height: 30px;
+}
+
+.TransformResult {
+  margin-top: 50px;
+}
