@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { connect, DispatchProp } from 'react-redux'
-import { originalDatasetActions } from '../actions/originalDataset.actions'
+import { datasetActions } from '../actions/dataset.actions'
 import { RootState } from '../configureStore'
 import { Product, ValidatedProduct } from '../types'
 import { EditableTable } from './EditableTable'
@@ -33,7 +33,7 @@ class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
 
   private onUpdateData = (products: Array<ValidatedProduct<Product>>) => {
     this.props.dispatch(
-      originalDatasetActions.updateDictionary(
+      datasetActions.updateDictionary(
         products.map(p => ({ product: p.product.value, color: p.color.value, price: p.price.value }))
       )
     )
@@ -58,7 +58,7 @@ class ManageDatasetComponent extends React.PureComponent<ManageDatasetProps> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  return { products: state.originalDataset }
+  return { products: state.dataset }
 }
 
 export const ManageDataset = connect(mapStateToProps)(ManageDatasetComponent)

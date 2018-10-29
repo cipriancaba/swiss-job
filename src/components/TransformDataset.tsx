@@ -37,7 +37,7 @@ class TransformDatasetComponent extends React.PureComponent<TransformDatasetProp
     const currentDictionaryMap = currentDictionary.reduce((acc, p) => ({ ...acc, [p.from]: p.to }), {})
     const mappedProducts = this.props.products.map(p => ({
       ...p,
-      color: currentDictionaryMap[p.color] || 'Missing mapping key!!! Please add to transform dictionary',
+      color: currentDictionaryMap[p.color] || `Missing mapping key [${p.color}]!!! Please add to transform dictionary`,
     }))
 
     this.setState({
@@ -53,7 +53,7 @@ class TransformDatasetComponent extends React.PureComponent<TransformDatasetProp
       <div className="TransformSource">
         <div className="Dataset">
           <Link to="dataset">
-            <h2>Original dataset</h2>
+            <h2>Dataset</h2>
           </Link>
           <DisplayTable<Product> products={this.props.products} headers={['Product', 'Color', 'Price']} />
         </div>
@@ -85,7 +85,7 @@ class TransformDatasetComponent extends React.PureComponent<TransformDatasetProp
 const mapStateToProps = (state: RootState) => {
   return {
     dictionaries: state.dictionaries,
-    products: state.originalDataset,
+    products: state.dataset,
   }
 }
 

@@ -1,9 +1,9 @@
-import { OriginalDatasetActions, OriginalDatasetActionTypes } from '../actions/originalDataset.actions'
+import { DatasetActions, DatasetActionTypes } from '../actions/dataset.actions'
 import { Product } from '../types'
 
-export type OriginalDatasetState = Product[]
+export type DatasetState = Product[]
 
-export const initialState: OriginalDatasetState = [
+export const initialState: DatasetState = [
   {
     product: 'Apple iPhone 6s',
     color: 'Anthracite',
@@ -21,9 +21,9 @@ export const initialState: OriginalDatasetState = [
   },
 ]
 
-export function originalDataset(state = initialState, action: OriginalDatasetActions): OriginalDatasetState {
+export function dataset(state = initialState, action: DatasetActions): DatasetState {
   switch (action.type) {
-    case OriginalDatasetActionTypes.UPDATE_DATASET:
+    case DatasetActionTypes.UPDATE_DATASET:
       return [...action.payload]
     default:
       return state
