@@ -25,29 +25,31 @@ export class ManageDictionariesComponent extends React.PureComponent<ManageDicti
   ) => {
     const newProduct = { ...product, [property]: { value: newValue } }
 
-    let isValid = true
-    let validationError
-
-    if (newValue === '') {
-      isValid = false
-      validationError = 'Please enter a value'
-    } else if (
-      products.some(
-        existingProduct =>
-          existingProduct.from.value === newProduct.from.value && existingProduct.to.value === newProduct.to.value
-      )
-    ) {
-      // Clones: N identical rows in the dictionary.
-      isValid = false
-      validationError = 'Duplicate rows not allowed in dictionary'
-    } else if (products.some(existingProduct => existingProduct.from.value === newProduct.from.value)) {
-      // Forks: N rows in the dictionary with the same ‘From’ but with different ‘To’’ .
-      isValid = false
-      validationError = 'Duplicate from fields not allowed in dictionary'
-    }
-
-    newProduct[property].isValid = isValid
-    newProduct[property].validationError = validationError
+    Object.keys(newProduct).forEach(currentKey => {
+      if (newProduct[currentKey].value === '') {
+        newProduct[currentKey].isValid = false
+        newProduct[currentKey].validationError = 'Please enter a value'
+      } else if (
+        products.some(
+          existingProduct =>
+            existingProduct.from.value === newProduct.from.value && existingProduct.to.value === newProduct.to.value
+        )
+      ) {
+        // Clones: N identical rows in the dictionary.
+        newProduct[currentKey].isValid = false
+        newProduct[currentKey].validationError = 'Duplicate rows not allowed in dictionary'
+      } else if (products.some(existingProduct => existingProduct.from.value === newProduct.from.value)) {
+        // Forks: N rows in the dictionary with the same ‘From’ but with different ‘To’’ .
+        newProduct.from.isValid = false
+        newProduct.from.validationError = 'Duplicate from fields not allowed in dictionary'
+        newProduct.to.isValid = true
+        newProduct.to.validationError = undefined
+      } else {
+        // Make sure valid cells are valid
+        newProduct[currentKey].isValid = true
+        newProduct[currentKey].validationError = undefined
+      }
+    })
 
     return newProduct
   }
